@@ -69,7 +69,10 @@
                 {
                     <a class="nav-item nav-link" asp-area="" asp-controller="AccountManager" asp-action="AssignRole">Assign Role</a>
                 }
-                <span class="nav-item nav-link" style="color:red;font-weight:bold">Welcome Mr/Mrs @User.Identity.Name</span>
+                @if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Sales")))
+                {
+                    <span class="nav-item nav-link" style="color:red;font-weight:bold">Welcome Mr/Mrs @User.Identity.Name</span>
+                }
             </div>
             <div class="navbar-nav ml-auto">
                 @if (!User.Identity.IsAuthenticated)
