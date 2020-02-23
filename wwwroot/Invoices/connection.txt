@@ -1,0 +1,41 @@
+dotnet ef dbcontext scaffold "Data Source=DESKTOP-O68M5NP;Initial Catalog=Northwind;User ID={root};Password={root12345}"
+Microsoft.EntityFrameworkCore.SqlServer -o Models\Northwind -c NorthwindEntities
+
+----WORKING:- To make connection to databse------------
+dotnet ef dbcontext scaffold "Data Source=DESKTOP-O68M5NP;Initial Catalog=Northwind;User ID=root;Password=root12345" 
+Microsoft.EntityFrameworkCore.SqlServer -o Models\Northwind -c NorthwindEntities
+
+---------------To Update the Model connected to database-------------------------------------------------
+dotnet ef dbcontext scaffold "Data Source=DESKTOP-O68M5NP;Initial Catalog=Northwind;User ID=root;Password=root12345" Microsoft.EntityFrameworkCore.SqlServer -o Models\Northwind -f
+
+Bootswatch - for bootstrap
+
+Data Source=DESKTOP-O68M5NP;Initial Catalog=master;Integrated Security=True
+
+
+
+DESKTOP-O68M5NP
+
+
+DESKTOP-O68M5NP
+
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Pomelo.EntityFrameworkCore.MySql
+dotnet add package Pomelo.EntityFrameworkCore.SqlServer******
+dotnet add package Microsoft.EntityFrameworkCore.Tools.DotNet
+dotnet add package Microsoft.EntityFrameworkCore.Tools*******
+
+
+*************************STEPS TO CONNECT VS TO SQL(DATABASE FIRST METHOD)************************************************
+1> Put the connection string command in terminal of VS.(After connecting Model folder will be populated)
+2> Put the connection string in "appsetting.Json" file
+3> Make changes in Startup.cs
+4> Run the application.
+
+*******************************Steps to Make table from Class(CODE FIRST METHOD)*****************************
+1> Istall the above packages.(Marked ****)
+2> After Creating new class in Model run the command "add-migration NewMigration(migrationName) -Context NorthwindContext(database name)" AND 
+						     "update-database Organization_1(MigrationName {optional}) -Context OrganizationDB(Database)" 
+"PM> add-migration NewMigration -Context NorthwindContext"
+"script-migration"
+3> Inorder to update specific migration to database use "update-database -migration latestmigrationname"

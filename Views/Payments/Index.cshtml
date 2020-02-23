@@ -1,0 +1,100 @@
+﻿@*@model IEnumerable<LowCostHousing.Models.ClientRegistration>*@
+@model PaginatedList<LowCostHousing.Models.ClientRegistration>
+
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>*@
+@*<script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>*@
+<div class="container" style="padding-bottom:100px">
+    <p>
+        <span class="formHeading">Payments</span><br />
+    </p>
+
+    @*@using (Html.BeginForm("Index", "Payments", FormMethod.Post))
+    {
+        
+        <input type="submit" value="Search" class="btn btn-info btn-lg formButton" />
+    }*@
+
+    <form asp-action="Index" method="post" class="Searchingtab">
+        <div class="form-actions no-color">
+            <p>
+                <br />
+                <select id="ddProjectMaster" name="ProjectMasterID" class="form-control" asp-items="@(new SelectList(ViewBag.ListOfProjects,"ProjectMasterId","ProjectName",ViewBag.ProjectMasterID))"></select>
+                Find by Given Name/Family Name:&nbsp;&nbsp;<input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+                <input type="submit" value="Search" class="btn btn-info btn-lg formButton" /> |
+                <a asp-action="Index" class="btn btn-info btn-lg formButton">Back to Full List</a>
+            </p>
+        </div>
+    </form>
+    @*<p>Type something in the input field to search the table for <b>Name,Email and Phone number</b>:</p>
+        <input id="myInput" type="text" placeholder="Search..">*@
+    <br><br>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayName("Name")
+                </th>
+                <th>
+                    @Html.DisplayName("Lot No")
+                </th>
+                <th>
+                    @Html.DisplayName("Reference Number")
+                </th>
+                <th>
+                    @Html.DisplayName("Pay")
+                </th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+                @foreach (var item in Model)
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientFamilyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LotNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReferenceNumber)
+                </td>
+                <td>
+                    <a asp-action="Pay" asp-route-id="@item.ClientRegistrationId">Pay</a>
+                </td>
+            </tr>
+                }
+        </tbody>
+    </table>
+
+    <br />
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-action="Index"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Index"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
+
+</div>
+
+

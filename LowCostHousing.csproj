@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20190912111510_TenthMigration.cs" />
+    <Compile Remove="Migrations\20190912111510_TenthMigration.Designer.cs" />
+    <Compile Remove="Migrations\20190912111816_EleventhMigration.cs" />
+    <Compile Remove="Migrations\20190912111816_EleventhMigration.Designer.cs" />
+    <Compile Remove="Migrations\20190912114739_TenthMigration.cs" />
+    <Compile Remove="Migrations\20190912114739_TenthMigration.Designer.cs" />
+    <Compile Remove="Migrations\20191228000729_sixteenthMigration.cs" />
+    <Compile Remove="Migrations\20191228000729_sixteenthMigration.Designer.cs" />
+    <Compile Remove="Migrations\20191230053717_SeveenthMigration.cs" />
+    <Compile Remove="Migrations\20191230053717_SeveenthMigration.Designer.cs" />
+    <Compile Remove="Migrations\20191230054217_SeveenthMigration.cs" />
+    <Compile Remove="Migrations\20191230054217_SeveenthMigration.Designer.cs" />
+    <Compile Remove="Migrations\20191230054710_SeveenthMigration.cs" />
+    <Compile Remove="Migrations\20191230054710_SeveenthMigration.Designer.cs" />
+    <Compile Remove="Migrations\20191230054817_SeveenthMigration.cs" />
+    <Compile Remove="Migrations\20191230054817_SeveenthMigration.Designer.cs" />
+    <Compile Remove="Migrations\20200113081933_initialmigration.cs" />
+    <Compile Remove="Migrations\20200113081933_initialmigration.Designer.cs" />
+    <Compile Remove="Migrations\20200113082512_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200113082512_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200212114038_AddColumnsInAspNetUser.cs" />
+    <Compile Remove="Migrations\20200212114038_AddColumnsInAspNetUser.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+    <PackageReference Include="PagedList" Version="1.17.0" />
+    <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Invoices\" />
+  </ItemGroup>
+
+</Project>

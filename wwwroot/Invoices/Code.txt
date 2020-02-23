@@ -1,0 +1,7 @@
+
+
+OrganizationDB odb=new OrganizationDB();
+List<Department> department=OrganizationDB.Department.ToList();
+Department D=new Department(){Name="test" , Description="Demo"};
+odb.Department.Add(D);
+odb.Savechanges();

@@ -1,0 +1,223 @@
+﻿@model LowCostHousing.Models.ClientRegistration
+
+
+    <div class="container">
+        <h4>ClientRegistration</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ClientRegistrationId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ClientRegistrationId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TypeOfOwnership)
+            </dt>
+            <dd class="col-sm-10">
+                @{
+                    if (Model.TypeOfOwnership == true)
+                    {
+                        @Html.DisplayName("Joint")
+                    }
+                    else
+                    {
+                        @Html.DisplayName("Individual")
+                    }
+                }
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ClientGivenName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ClientGivenName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ClientFamilyName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ClientFamilyName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
+            <dd class="col-sm-10">
+                @{
+                    if (Model.Gender == "M")
+                    {
+                        @Html.DisplayName("Male")
+                    }
+                    else
+                    {
+                        @Html.DisplayName("Female")
+                    }
+                }
+                @*@Html.DisplayFor(model => model.Gender)*@
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </dt>
+            <dd class="col-sm-10">
+                @*@Html.DisplayFor(model => model.DateOfBirth)*@
+                @string.Format("{0:dd-MM-yyyy}", Model.DateOfBirth)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PassportNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PassportNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DrivingLicenseNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DrivingLicenseNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EmailAddress)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EmailAddress)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.HomePhoneNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.HomePhoneNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.MobileNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MobileNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.StreetNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.StreetNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.StreetName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.StreetName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayName("State")
+            </dt>
+            <dd class="col-sm-10">
+                @if (@ViewBag.State != null)
+                {
+                    @ViewBag.State.StateName
+                }
+                else
+                {
+                    @Html.DisplayFor(model => model.StateID)
+                }
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayName("Suburb")
+            </dt>
+            <dd class="col-sm-10">
+                @if (ViewBag.Suburb != null)
+                {
+                    @ViewBag.Suburb.SuburbName
+                }
+                else
+                {
+                    @Html.DisplayFor(model => model.SuburbID)
+                }
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PostCode)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PostCode)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EmploymentType)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EmploymentType)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EmployerName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EmployerName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PositionTitle)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PositionTitle)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NomineeGivenName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NomineeGivenName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NomineeFamilyName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NomineeFamilyName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NomineePassportNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NomineePassportNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NomineeMobileNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NomineeMobileNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </dt>
+            <dd class="col-sm-10">
+                @string.Format("{0:dd-MM-yyyy}", Model.CreatedOn)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CreatedBy)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayName("Project Name")
+            </dt>
+            <dd class="col-sm-10">
+                @if (@ViewBag.Project != null)
+                {
+                    @ViewBag.Project.ProjectName
+                }
+                else
+                {
+                    @Html.DisplayFor(model => model.ProjectMasterId)
+                }
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LotNo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LotNo)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ReferenceNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ReferenceNumber)
+            </dd>
+        </dl>
+        <a asp-action="Index">Back to List</a>
+    </div>
+<div>
+    
+</div>
+

@@ -1,0 +1,128 @@
+﻿@model LowCostHousing.Models.ProjectMaster
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ProjectMaster</h4>
+<hr />
+
+<form asp-action="Edit" method="post">
+    <div class="container">
+        <table class="table table-hover" style="background-color: #e9992845">
+            <tr>
+                <td>
+                    <div class="form-group row">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <label asp-for="ProjectMasterId" class="col-sm-2 col-form-label">Project Id</label>
+                        <div class="col-sm-10">
+                            <input asp-for="ProjectMasterId" readonly class="form-control" />
+                            <span asp-validation-for="ProjectMasterId" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group row">
+                        <label asp-for="UnitNo" class="col-sm-2 col-form-label">Unit No</label>
+                        <div class="col-sm-10">
+                            <input asp-for="UnitNo" class="form-control" />
+                            <span asp-validation-for="UnitNo" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group row">
+                        <label asp-for="ProjectName" class="col-sm-2 col-form-label">Project Name</label>
+                        <div class="col-sm-10">
+                            <input asp-for="ProjectName" class="form-control" />
+                            <span asp-validation-for="ProjectName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group row">
+                        <label asp-for="ReferenceNumber" class="col-sm-2 col-form-label">Reference Number</label>
+                        <div class="col-sm-10">
+                            <input asp-for="ReferenceNumber" class="form-control" />
+                            <span asp-validation-for="ReferenceNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group row">
+                        <label asp-for="ProjectAddress" class="col-sm-2 col-form-label">Project Address</label>
+                        <div class="col-sm-10">
+                            <input asp-for="ProjectAddress" class="form-control" />
+                            <span asp-validation-for="ProjectAddress" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group row">
+                        <label asp-for="AccountName" class="col-sm-2 col-form-label">Account Name</label>
+                        <div class="col-sm-10">
+                            <input asp-for="AccountName" class="form-control" />
+                            <span asp-validation-for="AccountName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group row">
+                        <label asp-for="AccountNumber" class="col-sm-2 col-form-label">Account Number</label>
+                        <div class="col-sm-10">
+                            <input asp-for="AccountNumber" class="form-control" />
+                            <span asp-validation-for="AccountNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group row">
+                        <label asp-for="BSB" class="col-sm-2 col-form-label">BSB</label>
+                        <div class="col-sm-10">
+                            <input asp-for="BSB" class="form-control" />
+                            <span asp-validation-for="BSB" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group row">
+                        <label asp-for="CreatedBy" class="col-sm-2 col-form-label">Created By</label>
+                        <div class="col-sm-10">
+                            <input asp-for="CreatedBy" class="form-control" />
+                            <span asp-validation-for="CreatedBy" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group row">
+                        <label asp-for="CreatedOn" class="col-sm-2 col-form-label">Created On</label>
+                        <div class="col-sm-10">
+                            <input asp-for="CreatedOn" class="form-control" />
+                            <span asp-validation-for="CreatedOn" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+        <a asp-action="Index">Back to List</a>
+    </div> 
+</form>
+

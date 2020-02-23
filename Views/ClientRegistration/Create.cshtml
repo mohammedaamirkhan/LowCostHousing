@@ -1,0 +1,309 @@
+﻿@model LowCostHousing.Models.ClientRegistration
+
+
+
+<h4>ClientRegistration</h4>
+<hr />
+<script type="text/javascript">
+    function AddTextBox() {   
+        if (document.getElementById('ChxIsContractSigned').checked) {
+            document.getElementById('ddProjectMaster').disabled  = false;
+            document.getElementById('txtLotNo').disabled = false;
+            document.getElementById('txtReferenceNumber').disabled  = false;
+        } else {
+            document.getElementById('ddProjectMaster').disabled  = true;
+            document.getElementById('txtLotNo').disabled = true;
+            document.getElementById('txtReferenceNumber').disabled  = true
+        }
+    }
+</script>
+
+<form asp-action="Create" method="post">
+    <div class="container">
+        <table class="table table-hover" style="background-color: #e9992845">
+            <tr >
+                <td>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div >
+                        <label asp-for="TypeOfOwnership" class="col-sm-2 col-form-label">Type of ownership</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        @Html.RadioButton("TypeOfOwnership", "1") Joint
+                        @Html.RadioButton("TypeOfOwnership", "0") Individual
+                    </div>
+                </td>
+                <td>
+                    <div >
+                        <label asp-for="ClientGivenName" class="col-sm-2 col-form-label">Given Name</label>
+                        <div class="col-sm-10">
+                            <input asp-for="ClientGivenName" class="form-control" />
+                            <span asp-validation-for="ClientGivenName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td>
+                    <div >
+                        <label asp-for="ClientFamilyName" class="col-sm-2 col-form-label">Family Name</label>
+                        <div class="col-sm-10">
+                            <input asp-for="ClientFamilyName" class="form-control" />
+                            <span asp-validation-for="ClientFamilyName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div >
+                        <label asp-for="Gender" class="col-sm-2 col-form-label">Gender</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        @Html.RadioButton("Gender", "M") Male
+                        @Html.RadioButton("Gender", "F") Female
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td>
+                    <div >
+                        <label asp-for="DateOfBirth" class="col-sm-2 col-form-label">Date of Birth</label>
+                        <div class="col-sm-10">
+                            <input asp-for="DateOfBirth" class="form-control" />
+                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div >
+                        <label asp-for="PassportNumber" class="col-sm-2 col-form-label">Passport Number</label>
+                        <div class="col-sm-10">
+                            <input asp-for="PassportNumber" class="form-control" />
+                            <span asp-validation-for="PassportNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td>
+                    <div >
+                        <label asp-for="DrivingLicenseNumber" class="col-sm-2 col-form-label">Driving license Number</label>
+                        <div class="col-sm-10">
+                            <input asp-for="DrivingLicenseNumber" class="form-control" />
+                            <span asp-validation-for="DrivingLicenseNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div >
+                        <label asp-for="EmailAddress" class="col-sm-2 col-form-label">Email address</label>
+                        <div class="col-sm-10">
+                            <input asp-for="EmailAddress" class="form-control" />
+                            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td>
+                    <div >
+                        <label asp-for="HomePhoneNumber" class="col-sm-2 col-form-label">Home phone Number</label>
+                        <div class="col-sm-10">
+                            <input asp-for="HomePhoneNumber" class="form-control" />
+                            <span asp-validation-for="HomePhoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div >
+                        <label asp-for="MobileNumber" class="col-sm-2 col-form-label">Mobile Number</label>
+                        <div class="col-sm-10">
+                            <input asp-for="MobileNumber" class="form-control" />
+                            <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td>
+                    <div >
+                        <label asp-for="StreetNumber" class="col-sm-2 col-form-label">Street Number</label>
+                        <div class="col-sm-10">
+                            <input asp-for="StreetNumber" class="form-control" />
+                            <span asp-validation-for="StreetNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div >
+                        <label asp-for="StreetName" class="col-sm-2 col-form-label">Street Name</label>
+                        <div class="col-sm-10">
+                            <input asp-for="StreetName" class="form-control" />
+                            <span asp-validation-for="StreetName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td>
+                    <div >
+                        <label asp-for="StateID" class="col-sm-2 col-form-label">State</label>
+                        <div class="col-sm-10">
+                            <select asp-for="StateID" class="form-control" asp-items="@(new SelectList(ViewBag.ListOfStates,"StateID","StateName"))"></select>
+                            <span asp-validation-for="StateID" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div >
+                        <label asp-for="SuburbID" class="col-sm-2 col-form-label">Suburn</label>
+                        <div class="col-sm-10">
+                            <select asp-for="SuburbID" class="form-control" asp-items="@(new SelectList(ViewBag.ListOfsuburbs,"SuburbID","SuburbName"))"></select>
+                            <span asp-validation-for="SuburbID" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td>
+                    <div >
+                        <label asp-for="PostCode" class="col-sm-2 col-form-label">Post Code</label>
+                        <div class="col-sm-10">
+                            <input asp-for="PostCode" class="form-control" />
+                            <span asp-validation-for="PostCode" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div >
+                        <label asp-for="EmploymentType" class="col-sm-2 col-form-label">Employment Type</label>
+                        <div class="col-sm-10">
+                            <input asp-for="EmploymentType" class="form-control" />
+                            <span asp-validation-for="EmploymentType" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td>
+                    <div >
+                        <label asp-for="EmployerName" class="col-sm-2 col-form-label">Employer Name</label>
+                        <div class="col-sm-10">
+                            <input asp-for="EmployerName" class="form-control" />
+                            <span asp-validation-for="EmployerName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div >
+                        <label asp-for="PositionTitle" class="col-sm-2 col-form-label">Position Title</label>
+                        <div class="col-sm-10">
+                            <input asp-for="PositionTitle" class="form-control" />
+                            <span asp-validation-for="PositionTitle" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td>
+                    <div >
+                        <label asp-for="NomineeGivenName" class="col-sm-2 col-form-label">Nominee Given Name</label>
+                        <div class="col-sm-10">
+                            <input asp-for="NomineeGivenName" class="form-control" />
+                            <span asp-validation-for="NomineeGivenName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div >
+                        <label asp-for="NomineeFamilyName" class="col-sm-2 col-form-label">Nominee Family Name</label>
+                        <div class="col-sm-10">
+                            <input asp-for="NomineeFamilyName" class="form-control" />
+                            <span asp-validation-for="NomineeFamilyName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td>
+                    <div >
+                        <label asp-for="NomineePassportNumber" class="col-sm-2 col-form-label">Nominee Passport Number</label>
+                        <div class="col-sm-10">
+                            <input asp-for="NomineePassportNumber" class="form-control" />
+                            <span asp-validation-for="NomineePassportNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div >
+                        <label asp-for="NomineeMobileNumber" class="col-sm-2 col-form-label">Nominee Mobile Number</label>
+                        <div class="col-sm-10">
+                            <input asp-for="NomineeMobileNumber" class="form-control" />
+                            <span asp-validation-for="NomineeMobileNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td>
+                    <div >
+                        <label asp-for="CreatedOn" class="col-sm-2 col-form-label">Created On</label>
+                        <div class="col-sm-10">
+                            <input asp-for="CreatedOn" class="form-control" />
+                            <span asp-validation-for="CreatedOn" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div >
+                        <label asp-for="CreatedBy" class="col-sm-2 col-form-label">Created By</label>
+                        <div class="col-sm-10">
+                            <input asp-for="CreatedBy" class="form-control" value="1" />
+                            <span asp-validation-for="CreatedBy" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td>
+                    <div>
+                        <label class="col-sm-2 col-form-label">Is Contract Signed</label>
+                        <div class="col-sm-10">
+                            <input type="checkbox" id="ChxIsContractSigned" onclick="AddTextBox();" />
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div  id="divProject">
+                        <label asp-for="ProjectMasterId" class="col-sm-2 col-form-label">Project</label>
+                        <div class="col-sm-10">
+                            <select id="ddProjectMaster" asp-for="ProjectMasterId" class="form-control" asp-items="@(new SelectList(ViewBag.ListOfProjects,"ProjectMasterId","ProjectName"))" disabled></select>
+                            <span asp-validation-for="ProjectMasterId" class="text-danger"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr  id="trProject">
+                <td>
+                    <div >
+                        <label class="col-sm-2 col-form-label">Lot No</label>
+                        <div class="col-sm-10">
+                            <input id="txtLotNo" asp-for="LotNo" class="form-control" disabled />   
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div >
+                        <label class="col-sm-2 col-form-label">Reference Number</label>
+                        <div class="col-sm-10">
+                            <input id="txtReferenceNumber" asp-for="ReferenceNumber" class="form-control" disabled />
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr >
+                <td>
+                    <input type="submit" value="Create" class="btn btn-info btn-lg formButton" />
+                </td>
+                <td>
+                </td>
+            </tr>
+        </table>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</form>
+

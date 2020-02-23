@@ -1,0 +1,105 @@
+﻿@model PaymentPlan
+
+<div class="container" style="padding-bottom:100px">
+    <p>
+        <span class="formHeading">Create Payment Plan</span><br />
+    </p>
+
+        <form asp-action="Index" method="post" class="Searchingtab">
+            <div class="form-actions no-color">
+                <table class="table-responsive" width="100%">
+                    <tr>
+                        <td>Select Project</td>
+                        <td>
+                            <select id="ddProjectMaster" name="ProjectMasterID" class="form-control" asp-for="ProjectMasterId"
+                                    asp-items="@(new SelectList(ViewBag.ListOfProjects, "ProjectMasterId", "ProjectName", ViewBag.ProjectMasterID))"
+                                    onchange="document.forms[0].submit();"></select>
+                        </td>
+                        <td>Select Reference Number</td>
+                        <td>
+                            <select id="ddReferenceNumber" name="ReferenceNumber" class="form-control" asp-for="ClientRegistrationId"
+                                    asp-items="@(new SelectList(ViewBag.ListOfReference, "ClientRegistrationId", "ReferenceNumber", ViewBag.ClientRegistrationId))"></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Land Cost</td>
+                        <td>
+                            <input type="text" name="LandCost" class="form-control" asp-for="LandCost" autocomplete="off" value="@ViewData["TotalLandCost"]" />
+                        </td>
+                        <td>Development Cost</td>
+                        <td>
+                            <input type="text" name="DevelopmentCost" class="form-control" asp-for="DevelopmentCost" autocomplete="off" value="@ViewData["TotalDevelopmentCost"]" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Start Date</td>
+                        <td>
+                            <input type="text" name="StartDate" class="form-control" id="datepicker" autocomplete="off" value="@ViewData["StartDate"]" />
+                        </td>
+                        <td>Years</td>
+                        <td>
+                            <input type="text" name="years" class="form-control" autocomplete="off" value="@ViewData["Totalyears"]" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Interval</td>
+                        <td>
+                            <input type="text" name="Interval" class="form-control" autocomplete="off" value="@ViewData["Interval"]" />
+                        </td>
+                        <td>Holding Deposit</td>
+                        <td>
+                            <input type="text" name="HoldingDeposit" class="form-control" autocomplete="off" value="@ViewData["HoldingDeposit"]" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <input type="submit" value="Create" class="btn btn-info btn-lg formButton" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+
+        <form asp-action="SaveData" asp-controller="PaymentPlan" method="post">
+            <table class="table table-striped" id="tblAmount">
+                <thead>
+                    <tr>
+                        <th>Sr. No</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{int j = 1; }
+                    @for (int i = 1; i <= ViewBag.years * 12; i++)
+                    {
+                        <tr>
+                            <td><label name="SrNo">@i</label></td>
+                            @if (j <= ((ViewBag.years / 2) * 12))
+                            {
+                                <td><input type="text" name="txtAmount" value="@ViewBag.LandCost" /></td>
+                                j++;
+
+                            }
+                            else
+                            {
+                                <td><input type="text" name="txtAmount" value="@ViewBag.DevelopmentCost" /></td>
+                                j++;
+
+                            }
+                            <td><input type="text" name="txtDate" id="datepicker" value="@DateTime.Now.AddMonths(@i).ToShortDateString()" /></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <input type="submit" value="Save" class="btn btn-info btn-lg formButton"/>
+            <input type="submit" value="Convert to Excel" class="btn btn-info btn-lg formButton" />
+        </form>
+</div>
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

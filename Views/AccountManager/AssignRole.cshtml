@@ -1,0 +1,47 @@
+﻿@model List<AssignRoleViewModel>
+@{
+    ViewData["Title"] = "AssignRole";
+}
+
+<h1>AssignRole</h1>
+
+<table>
+    <tr>
+        <td>
+            User Name
+        </td>
+        <td>
+            Email
+        </td>
+        <td>
+            Role Name
+        </td>
+        <td>
+            Roles
+        </td>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>
+                @item.UserName
+            </td>
+            <td>
+                @item.Email
+            </td>
+            <td>
+                @item.RoleName
+            </td>
+            <td>
+                <form asp-action="AssignRole" method="post">
+                    <input type="hidden"  name="UserId" asp-for="@item.UserId"/>
+                    <select name="RoleName" asp-for="@item.RoleName" asp-items="new SelectList(item.Roles)">
+                        <option>Select Role</option>
+                    </select>
+                    <input type="submit" value="Assign Role" />
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+

@@ -1,0 +1,5 @@
+List<> :- User can add items in List. Query gets execute immediately.
+IEnumerable<>:- User can only read the data but can't add any item. Query gets prepared first and execute whenever data is required.
+                In IEnumerable it fetch all data from database and then do the filtering in memory.
+
+IQuerable: Unlike IEnumerable In IQuerable it fetch filtered data from database itself. 

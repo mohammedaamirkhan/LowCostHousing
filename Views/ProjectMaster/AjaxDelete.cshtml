@@ -1,0 +1,60 @@
+﻿@model IEnumerable<LowCostHousing.Models.ProjectMaster>
+
+
+        <p>
+            <span class="formHeading">Project Master</span><br />
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                   
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProjectName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UnitNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProjectAddress)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedOn)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProjectName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UnitNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProjectAddress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedOn)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ProjectMasterId }) |
+                            @*@Html.ActionLink("Delete", "Delete", new { id = item.ProjectMasterId }) |*@@*Delete functionality is implemented using Ajax*@
+                            <a asp-action="AjaxDelete" asp-controller="ProjectMaster"
+                               data-ajax-begin="return confirm('Are you sure you want to delete?');"
+                               data-ajax="true"
+                               data-ajax-method="GET"
+                               data-ajax-mode="replace"
+                               data-ajax-url="ProjectMaster\AjaxDelete?id=@item.ProjectMasterId"
+                               data-ajax-update="#DivProjects">Ajax Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        
+       

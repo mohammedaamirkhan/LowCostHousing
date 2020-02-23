@@ -1,0 +1,153 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+
+<div class="container">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#ClientLogIn">Client LogIn</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#AgentLogIn">Agent LogIn</a>
+        </li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+
+        <div id="ClientLogIn" class="container tab-pane active">
+            <h2>Client Login</h2>
+            <form asp-action="Register" method="post">
+                <div class="container">
+                    <table class="table table-hover" style="background-color: #e9992845">
+                        <tr>
+                            <td>
+                                <div class="form-group row">
+                                    <label asp-for="ProjectMasterId" class="col-sm-2 col-form-label">Project</label>
+                                    <div class="col-sm-10">
+                                        <select id="ddProjectMaster" name="ProjectMasterID" class="form-control" asp-for="ProjectMasterId"
+                                                asp-items="@(new SelectList(ViewBag.ListOfProjects, "ProjectMasterId", "ProjectName", ViewBag.ProjectMasterID))"
+                                                onchange="document.forms[0].submit();"></select>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group row">
+                                            <label asp-for="ClientRegistrationId" class="col-sm-2 col-form-label">Client</label>
+                                            <div class="col-sm-10">
+                                                <select id="ddClientName" name="ClientRegistrationId" class="form-control" asp-for="ClientRegistrationId"
+                                                        asp-items="@(new SelectList(ViewBag.Clients, "ClientRegistrationId", "ClientGivenName", ViewBag.ClientRegistrationId))"></select>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group row">
+                                            <label asp-for="UserName" class="col-sm-2 col-form-label">User Name</label>
+                                            <div class="col-sm-10">
+                                                <input asp-for="UserName" class="form-control" />
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group row">
+                                            <label asp-for="Email" class="col-sm-2 col-form-label">Email Address</label>
+                                            <div class="col-sm-10">
+                                                <input asp-for="Email" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group row">
+                                            <label asp-for="Password" class="col-sm-2 col-form-label">Password</label>
+                                            <div class="col-sm-10">
+                                                <input asp-for="Password" type="password" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group row">
+                                            <label asp-for="ConfirmPassowrd" class="col-sm-2 col-form-label">Confirm Password</label>
+                                            <div class="col-sm-10">
+                                                <input asp-for="ConfirmPassowrd" type="password" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="submit" value="Register Client" class="btn btn-info btn-lg formButton" />
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="AgentLogIn" class="container tab-pane fade">
+                    <h2>Agent Login</h2>
+                    <form asp-action="Register" method="post">
+                        <div class="container">
+                            <table class="table table-hover" style="background-color: #e9992845">
+                                <tr>
+                                    <td>
+                                        <div class="form-group row">
+                                            <label asp-for="UserName" class="col-sm-2 col-form-label">User Name</label>
+                                            <div class="col-sm-10">
+                                                <input asp-for="UserName" class="form-control" />
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group row">
+                                            <label asp-for="Email" class="col-sm-2 col-form-label">Email Address</label>
+                                            <div class="col-sm-10">
+                                                <input asp-for="Email" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group row">
+                                            <label asp-for="Password" class="col-sm-2 col-form-label">Password</label>
+                                            <div class="col-sm-10">
+                                                <input asp-for="Password" type="password" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group row">
+                                            <label asp-for="ConfirmPassowrd" class="col-sm-2 col-form-label">Confirm Password</label>
+                                            <div class="col-sm-10">
+                                                <input asp-for="ConfirmPassowrd" type="password" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="submit" value="Register Agent" class="btn btn-info btn-lg formButton" />
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+       
+
+

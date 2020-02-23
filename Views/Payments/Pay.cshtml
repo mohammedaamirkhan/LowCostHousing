@@ -1,0 +1,90 @@
+﻿@model IEnumerable<LowCostHousing.Models.Payments>
+
+@{
+    var clients = (List<PaymentsClass>)ViewData["Details"]; // Cast the list
+    var totalPaidAmount = (List<PaymentsClass>)ViewData["TotalPaidAmount"];
+    var paymentDetails = (List<PaymentsClass>)ViewData["PaymentDetails"]; // Cast the list
+}
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Given Name</th>
+                <th>Family Name</th>
+                <th>Project Name</th>
+                <th>Lot No</th>
+                <th>Reference Number</th>
+                <th>Mobile Number</th>
+            </tr>
+        </thead>
+        @foreach (var p in @clients)
+        {
+            <tr>
+                <td>@p.ClientGivenName</td>
+                <td>@p.ClientFamilyName</td>
+                <td>@p.ProjectName</td>
+                <td>@p.LotNo</td>
+                <td>@p.ReferenceNumber</td>
+                <td>@p.MobileNumber</td>
+            </tr>
+        }
+    </table>
+    <div class="col-md-12">
+        <h1>Payments</h1>
+        <form asp-action="SavePayment" method="post" enctype="multipart/form-data">
+            @*asp-route-id="5"*@
+            <table class="table table-striped">
+                <thead style="column-span:all">
+                    @foreach (var tp in @totalPaidAmount)
+                    {
+                        <tr>
+                            <span style="padding-left: 15px;font-size: x-large;font-family: -webkit-body;color: chocolate;font-weight: bold;">TOTAL PAID:$ @tp.TotalAmount</span>
+                            
+                        </tr>
+                    }
+                    </thead>
+                    <tr>
+                        <th>Amount Paid</th>
+                        <th>Paid On</th>
+                        <th>Upload Invoice</th>
+                        <th>Description</th>
+                    </tr>
+                    @foreach (var py in @paymentDetails)
+                    {
+                        <tr>
+                            <td>$@py.AmountPaid</td>
+                            <td>@py.PaidOn</td>
+                            <td>
+                                @py.FileName&nbsp; @Html.ActionLink("Download", "DownloadInvoice", "Payments", new { FileName = @py.FileName })
+                            </td>
+                            <td>@py.Description</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td>
+                            @Html.TextBox("txtAmountPaid", "", new { autocomplete = "off" })
+                        </td>
+                        <td>
+                            @Html.TextBox("txtPaidOn", "", new { id = "datepicker", autocomplete = "off" })
+                        </td>
+                        <td>
+                            <input type="file" name="file" />
+                        </td>
+                        <td>
+                            @Html.TextBox("txtDescripton", "", new { autocomplete = "off" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Save" class="btn btn-info btn-lg formButton" /></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+        </form>
+    </div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+

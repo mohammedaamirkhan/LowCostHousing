@@ -1,0 +1,109 @@
+﻿@*@model IEnumerable<LowCostHousing.Models.ClientRegistration>*@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model PaginatedList<LowCostHousing.Models.ClientRegistration>
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+@*<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>*@
+
+<div class="container" style="padding-bottom:100px">
+    <p>
+        <span class="formHeading">
+            Client Registration
+        </span><br />
+        <a asp-action="Create">Create New</a>
+    </p>
+
+    <form asp-action="Index" method="get" class="Searchingtab">
+        <div class="form-actions no-color">
+            <p>
+                Find by Given Name/Family Name:&nbsp;&nbsp;<input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+                <input type="submit" value="Search" class="btn btn-info btn-lg formButton" /> |
+                <a asp-action="Index" class="btn btn-info btn-lg formButton">Back to Full List</a>
+            </p>
+        </div>
+    </form>
+
+    @*<p>Type something in the input field to search the table for <b>Name,Email and Phone number</b>:</p>
+    <input id="myInput" type="text" placeholder="Search..">*@
+    <br><br>
+
+    <table id="myTable" class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayName("Given Name")
+                </th>
+                <th>
+                    @Html.DisplayName("Family Name")
+                </th>
+                <th>
+                    @Html.DisplayName("Email Address")
+                </th>
+                <th>
+                    @Html.DisplayName("Mobile Number")
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientGivenName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientFamilyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MobileNumber)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ClientRegistrationId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ClientRegistrationId }) |
+                        <a asp-action="AjaxDelete" asp-controller="ClientRegistration"
+                           data-ajax-begin="return confirm('Are you sure you want to delete?');"
+                           data-ajax="true"
+                           data-ajax-method="GET"
+                           data-ajax-mode="replace"
+                           data-ajax-url="ClientRegistration\AjaxDelete?id=@item.ClientRegistrationId"
+                           data-ajax-update="#DivClients">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <br />
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-action="Index"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Index"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
+</div>

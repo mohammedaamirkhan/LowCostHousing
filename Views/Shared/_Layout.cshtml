@@ -1,0 +1,113 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <title>LCH</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link href="~/lib/css/StyleSheet.css" rel="stylesheet" />
+
+    <script src="~/lib/js/main.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+
+    <script src="https://kit.fontawesome.com/9e18812bb7.js" crossorigin="anonymous"></script>
+
+    @*Calender controller ------ Start*@
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+            $(function () {
+                $("#datepicker").datepicker({ dateFormat: "dd/mm/yy" });
+            });
+        </script>
+    @*Calender controller ------ End*@
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+    <nav class="navbar navbar-expand-md navbar-light navbar-default navbar-fixed-top">
+        <a href="#" class="navbar-brand"><img src="~/img/logo_LCH.png" /></a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="nav navbar-nav navbar-right">
+                <a class="nav-item nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a href="#" class="nav-item nav-link">Profile</a>
+                <a href="#" class="nav-item nav-link">Messages</a>
+                <a href="#" class="nav-item nav-link" tabindex="-1">Reports</a>
+                @if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Sales")))
+                {
+                    <a class="nav-item nav-link" asp-area="" asp-controller="ProjectMaster" asp-action="Index">Project Master</a>
+                    <a class="nav-item nav-link" asp-area="" asp-controller="ClientRegistration" asp-action="Index">Client Registration</a>
+                    <a class="nav-item nav-link" asp-area="" asp-controller="Payments" asp-action="Index">Payments</a>
+                    <a class="nav-item nav-link" asp-area="" asp-controller="PaymentPlan" asp-action="Index">Payment Plan</a>
+                }
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <a class="nav-item nav-link" asp-area="" asp-controller="AccountManager" asp-action="AssignRole">Assign Role</a>
+                }
+                <span class="nav-item nav-link" style="color:red;font-weight:bold">Welcome @User.Identity.Name</span>
+            </div>
+            <div class="navbar-nav ml-auto">
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <a class="nav-item nav-link" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                    <a class="nav-item nav-link" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                }
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="nav-item nav-link" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                }
+                </div>
+        </div>
+    </nav>
+
+    <section>@RenderBody()</section> @*style="padding-bottom:100px"*@
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <p>Copyright &copy; Low Cost Housing 2019</p>
+                </div>
+                <div class="col-sm-4">
+                    <ul class="social-links">
+                        <li><a href="#"><i class="fab fa-facebook-square fa-2x" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter-square fa-2x" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus-square fa-2x" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram fa-2x" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 scroll-to-top-button">
+                    <a href="#cover"><i class="fa fa-3x fa-chevron-circle-up"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
